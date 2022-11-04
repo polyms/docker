@@ -1,0 +1,19 @@
+{
+  "icon": "favicon.svg",
+  "vm": {
+    "composefile": "docker-compose.yaml",
+    "exposes": {
+      "socket": "extension-polyms-docker.sock"
+    }
+  },
+  "ui": {
+    "dashboard-tab": {
+      "title": "Polyms Docker",
+      "src": "index.html",
+      "root": "ui",
+      "backend": {
+        "socket": "extension-polyms-docker.sock"
+      }
+    }
+  }
+}

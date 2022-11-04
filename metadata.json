@@ -8,7 +8,7 @@
   },
   "ui": {
     "dashboard-tab": {
-      "title": "Polyms Docker",
+      "title": "Polyms",
       "src": "index.html",
       "root": "ui",
       "backend": {

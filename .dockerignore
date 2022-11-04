@@ -1,1 +1,9 @@
 ui/node_modules
+ui/dist
+
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/releases
+!**/.yarn/plugins
+!**/.yarn/sdks
+!**/.yarn/versions

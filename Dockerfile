@@ -13,17 +13,16 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 FROM --platform=$BUILDPLATFORM node:17.7-alpine3.14 AS client-builder
 WORKDIR /ui
 # cache packages in layer
-COPY ui/package.json /ui/package.json
-COPY ui/package-lock.json /ui/package-lock.json
-RUN --mount=type=cache,target=/usr/src/app/.npm \
-    npm set cache /usr/src/app/.npm && \
-    npm ci
+COPY ui/package.json ui/yarn.lock ui/.yarnrc.yml ./
+COPY ui/.yarn/ ./.yarn/
+RUN yarn install --immutable
+
 # install
-COPY ui /ui
-RUN npm run build
+COPY ui .
+RUN yarn build
 
 FROM alpine
-LABEL org.opencontainers.image.title="Polyms Docker" \
+LABEL org.opencontainers.image.title="Polyms" \
     org.opencontainers.image.description="Polyms Docker extension" \
     org.opencontainers.image.vendor="Polyms" \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
